@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/animate.css">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UpgradPhone_Directory</title>
+</head>
+
+    <body>
+
+       <section class="container">
+       	   <h1 class="Hed center">Phone Dir</h1>
+
+
+           <div class = 'row' id = "oops">
+                <div class = "col s12 m6 offset-m3 l6 offset-l3 myblock">
+                             
+
+                      <h6 class = "basic center">Ooops No Directory present!</h6>
+
+                      <div class="center" style="margin-top: 20px;"><a href="index.html" class="btn waves-effect waves-light light-green lighten-4 black-text">Click for add Contacts</a>
+            
+                    </div>
+                       
+               </div>
+           </div>
+
+
+       	   <div class = "row" id = "show">
+
+       	   	   <div class = "col s12 m6 offset-m3 l6 offset-l3 myblock">
+						       	   	   	 
+                             <ul class="collection" id = "list">
+                                 <!--  <li class="collection-item avatar">
+                                          <img src="images/person.png" alt="" class="circle">
+                                          <p>name<br>
+                                             8968886
+                                          </p>
+                                          <button class="secondary-content"><i class="material-icons">delete</i></buttons>
+                                  </li> -->
+                            </ul>
+
+                             <div class="input-field left">
+
+                <button class="btn waves-effect waves-light light-green lighten-4 black-text " onclick="dall()">delete All</button>
+            
+                </div>
+
+						   </div>
+
+       	   </div>
+       </section>
+
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>     
+    <script type="text/javascript" src="js/materialize.min.js"></script>  
+    <script>
+
+        //console.log(localStorage.getItem('dirr'));
+
+      //localStorage.clear();
+
+    	var data = (localStorage.getItem('dirr'))?(JSON.parse(localStorage.getItem('dirr'))):{
+    
+            directory : []
+    
+       };
+        renderdir();
+
+       console.log(data.directory);
+
+       function dall(){
+        if (confirm("Do you really want to delete your complete directory")) {
+            localStorage.clear();
+            location.reload(); 
+          } 
+       }
+
+
+       function renderdir(){
+
+            if(!data.directory.length){
+
+              var oops = document.getElementById("oops");
+              var sho = document.getElementById("show");
+
+              oops.style.display = "block";
+              sho.style.display = "none";
+
+              return;
+            }
+            else
+            {
+              var oops = document.getElementById("oops");
+              var sho = document.getElementById("show");
+               oops.style.display = "none";
+              sho.style.display = "block";
+            }
+   
+            for(var i =0;i<data.directory.length;i++)
+            {
+                var value = data.directory[i];
+                add(value);
+            }
+
+       }
+
+       function deletethis(name)
+       {
+
+          
+            if(!data.directory.length)return;
+    
+            for(var i =0;i<data.directory.length;i++)
+            {
+                var arr = data.directory[i].split("/");
+                  var n = arr[0];
+                  if(n == name)
+                  {
+                  
+                    data.directory.splice(i , 1);
+                  }
+            }
+
+            localStorage.clear();
+            localStorage.setItem('dirr' , JSON.stringify(data));
+            location.reload();
+
+       }
+
+
+       function add(mytext)
+       {
+            var li = document.getElementById("list");
+
+
+            var thing = document.createElement('li');
+            thing.classList.add("collection-item");
+            thing.classList.add("avatar");
+
+
+            var arr = mytext.split("/");
+            var n = arr[0];
+            var ph = arr[1];
+
+            var image = document.createElement('img');
+            image.classList.add("circle");
+            image.setAttribute("src", "images/person.png");
+
+            var name = document.createElement('p');
+            name.innerHTML = n+"<br>"+ph ;
+
+            var button = document.createElement('button');
+            button.classList.add("secondary-content");
+            button.classList.add("white");
+             button.classList.add("btn-floating");
+             button.classList.add("waves-effect");
+             button.classList.add("waves-red");
+
+             var foo = "deletethis('" + n + "')";
+
+             button.setAttribute("onclick" , foo);
+            var icon = "<i class = 'material-icons green-text'>delete</i>"
+            button.innerHTML = icon;
+
+            thing.appendChild(image);
+            thing.appendChild(name);
+            thing.appendChild(button);
+
+            li.appendChild(thing);
+       }
+
+      
+      
+    </script>
+</body>
+
+</html>

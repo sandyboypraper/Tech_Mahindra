@@ -1,0 +1,78 @@
+
+.mycolor{
+background-color: #263238;
+
+}
+
+
+.myblock{
+  padding: 50px !important;
+}
+
+.mybox{
+  margin: 30px;
+}
+
+.myboxx{
+  margin: 20px;
+}
+
+.mylabel{
+  padding-left: 10px !important;
+  border: none !important;
+  outline: none !important;
+  cursor: default;
+  color: #1e88e5;
+}
+
+.myinput{
+  padding-left: 2px !important;
+  border: none !important;
+  outline: none !important;
+  cursor: default;
+}
+
+input:focus {
+  border-bottom: none!important;
+  box-shadow: none!important;
+}
+
+.myline{
+  line-height: 2px !important;
+}
+
+@font-face
+{
+font-family: heading;
+src: url('../fonts/heading/PIZZADUDEFATOUTLINE.ttf');
+}
+
+.Hed{
+  font-family: heading;
+  font-size: 15px !important;
+  font-weight: 10px !important;
+}
+
+.smallHed{
+    font-family: basic;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+  font-size: 12px !important;
+  font-weight: 5px !important;
+}
+
+@font-face
+{
+font-family: basic;
+src: url('../fonts/InFormal_Style_Regular.otf');
+}
+
+.carouselheight{
+  max-height: 80vh !important;
+}
+
+@font-face
+{
+font-family: subh;
+src: url('../fonts/dope-jam/DOPEJAM.TTF');
+}
