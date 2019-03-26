@@ -1,5 +1,5 @@
 .headerr{
-    background : url("../images/office.jpg");
+    background : url("office.jpg");
     background-repeat: none;
     background-size: cover;
     background-position: center center;
@@ -129,7 +129,7 @@ button{
 }
 
 .speakers{
-    background : url("../images/manspeaker.jpg");
+    background : url("manspeaker.jpg");
     background-repeat: none;
     background-size: cover;
     background-position: center center;
@@ -141,7 +141,7 @@ button{
 }
 
 .speakers2{
-    background : url("../images/manspeaker.jpg");
+    background : url("manspeaker.jpg");
     background-repeat: none;
     background-size: cover;
     background-position: center center;
